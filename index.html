@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6 Months — Полгода | 06.06.2026 — 06.12.2026</title>
+  <link rel="preconnect" href="https://googleapis.com" />
+  <link rel="preconnect" href="https://gstatic.com" crossorigin />
+  <link href="https://googleapis.com/css2?family=Alex+Brush&family=Caveat:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-paper: #faf7f2;
+      --card-bg: #ffffff;
+      --text-main: #1e1c1a;
+      --text-muted: #6e675f;
+      --accent: #b85d6f;
+      --accent-soft: rgba(184, 93, 111, 0.14);
+      --border-paper: #e6dfd5;
+      --shadow-soft: 0 12px 32px rgba(30, 28, 26, 0.07);
+      --shadow-polaroid: 0 14px 30px rgba(30, 28, 26, 0.11);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-paper);
+      color: var(--text-main);
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(rgba(30, 28, 26, 0.035) 1px, transparent 0),
+        radial-gradient(rgba(184, 93, 111, 0.03) 1px, transparent 0);
+      background-size: 28px 28px;
+      background-position: 0 0, 14px 14px;
+    }
+
+    /* Тонкая бумажная текстура */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.25;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://w3.org id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.28'/%3E%3C/svg%3E");
+    }
+
+    /* Ч/Б -> Цвет при наведении */
+    .bw-hover {
+      filter: grayscale(100%) contrast(1.04);
+      transition: filter 0.6s ease, transform 0.6s ease;
+    }
+
+    .bw-hover:hover,
+    .polaroid-card:hover .bw-hover,
+    .gallery-item:hover .bw-hover {
+      filter: grayscale(0%) contrast(1);
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+
+    section {
+      padding: 56px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.26em;
+      color: var(--accent);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4.5vw, 48px);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--text-main);
+    }
+
+    .section-line {
+      width: 54px;
+      height: 1px;
+      background: var(--accent);
+      margin: 14px auto 0;
+    }
+
+    /* Музыкальный мини-плеер с винилом */
+    .top-player-bar {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-paper);
+      padding: 10px 20px;
+    }
+
+    .player-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .vinyl-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .vinyl-disc {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, var(--accent) 0 7px, #1e1c1a 8px 10px, #2c2926 11px 14px, #191816 15px 18px, #2b2825 19px 22px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+      position: relative;
+      flex-shrink: 0;
+      animation: spinVinyl 5s linear infinite;
+      animation-play-state: paused;
+    }
+
+    .vinyl-disc::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 4px;
+      height: 4px;
+      background: var(--bg-paper);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .vinyl-disc.playing {
+      animation-play-state: running;
+    }
+
+    @keyframes spinVinyl {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .track-meta {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .track-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .track-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex: 1;
+      max-width: 420px;
+      min-width: 240px;
+    }
+
+    .btn-play {
+      background: var(--text-main);
+      color: #ffffff;
+      border: none;
+      padding: 8px 18px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .btn-play:hover {
+      background: var(--accent);
+    }
+
+    .progress-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .progress-bar {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 3px;
+      background: var(--border-paper);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .progress-bar::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+    }
+
+    .time-text {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+      min-width: 36px;
+    }
+
+    /* Шапка (Header) */
+    .hero-header {
+      text-align: center;
+      padding: 72px 20px 44px;
+      border-bottom: 1px solid var(--border-paper);
+      position: relative;
+    }
+
+    .issue-tag {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      display: inline-block;
+      border-top: 1px solid var(--border-paper);
+      border-bottom: 1px solid var(--border-paper);
+      padding: 6px 18px;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(44px, 7.5vw, 88px);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
+      margin-bottom: 14px;
+    }
+
+    .hero-title span {
+      font-family: 'Alex Brush', cursive;
+      font-weight: 400;
+      color: var(--accent);
+      font-size: 1.12em;
+      padding: 0 6px;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(20px, 2.6vw, 28px);
+      font-style: italic;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* Живой таймер */
+    .timer-section {
+      padding: 46px 0 30px;
+    }
+
+    .timer-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-paper);
+      box-shadow: var(--shadow-soft);
+      padding: 34px 24px;
+      text-align: center;
+      position: relative;
+    }
+
+    .timer-caption {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+
+    .timer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .timer-box {
+      padding: 16px 10px;
+      border: 1px solid var(--border-paper);
+      background: var(--bg-paper);
+    }
+
+    .timer-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 5vw, 54px);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .timer-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* Словарь и Цитата */
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .editorial-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-paper);
+      box-shadow: var(--shadow-soft);
+      padding: 38px 34px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .editorial-card::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1.5deg);
+      width: 96px;
+      height: 22px;
+      background: rgba(184, 93, 111, 0.16);
+      border-left: 1px dashed rgba(184, 93, 111, 0.35);
+      border-right: 1px dashed rgba(184, 93, 111, 0.35);
+    }
+
+    .dict-word {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text-main);
+    }
+
+    .dict-phonetic {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 19px;
+      color: var(--accent);
+      margin: 6px 0 18px;
+    }
+
+    .dict-def {
+      font-size: 14px;
+      color: var(--text-main);
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+
+    .dict-def span {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--accent);
+      margin-right: 6px;
+    }
+
+    .quote-mark {
+      font-family: 'Alex Brush', cursive;
+      font-size: 54px;
+      color: var(--accent);
+      line-height: 0.6;
+Будьте осторожны, используя код.
+margin-bottom: 12px;
+}
+.song-lyrics {
+font-family: 'Cormorant Garamond', serif;
+font-size: 25px;
+font-style: italic;
+line-height: 1.5;
+color: var(--text-main);
+margin-bottom: 18px;
+}
+.song-author {
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.22em;
+color: var(--text-muted);
+border-top: 1px solid var(--border-paper);
+padding-top: 14px;
+}
+/* Три главные даты Polaroid */
+.polaroids-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 28px;
+align-items: start;
+}
+.polaroid-card {
+background: var(--card-bg);
+padding: 16px 16px 26px;
+box-shadow: var(--shadow-polaroid);
+border: 1px solid var(--border-paper);
+position: relative;
+transition: transform 0.35s ease;
+}
+.polaroid-card:nth-child(1) { transform: rotate(-1.4deg); }
+.polaroid-card:nth-child(2) { transform: rotate(1.1deg); }
+.polaroid-card:nth-child(3) { transform: rotate(-0.8deg); }
+.polaroid-card:hover {
+transform: rotate(0deg) translateY(-4px);
+z-index: 5;
+}
+/* Декоративный скотч */
+.washi-tape {
+position: absolute;
+top: -12px;
+left: 50%;
+transform: translateX(-50%) rotate(2deg);
+width: 90px;
+height: 24px;
+background: rgba(232, 221, 207, 0.78);
+box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+z-index: 2;
+}
+.polaroid-photo-wrap {
+width: 100%;
+aspect-ratio: 4 / 4.3;
+background: #f0ece4;
+overflow: hidden;
+position: relative;
+cursor: pointer;
+}
+.polaroid-photo-wrap img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+.polaroid-trio {
+width: 100%;
+aspect-ratio: 4 / 4.3;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 5px;
+background: #f7f4ee;
+padding: 4px;
+}
+.polaroid-trio img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+cursor: pointer;
+display: block;
+}
+.polaroid-footer {
+text-align: center;
+padding-top: 16px;
+}
+.polaroid-caption {
+font-family: 'Caveat', cursive;
+font-size: 28px;
+font-weight: 600;
+color: var(--text-main);
+line-height: 1.1;
+}
+.polaroid-date {
+font-family: 'Caveat', cursive;
+font-size: 21px;
+color: var(--accent);
+margin-top: 2px;
+}
+/* Интерактивная фотобудка */
+.booth-stage {
+width: 100%;
+aspect-ratio: 4 / 4.3;
+background: #f3efe8;
+border: 1px dashed #cfc6b8;
+position: relative;
+overflow: hidden;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 16px;
+text-align: center;
+}
+.booth-stage video,
+.booth-stage img.booth-result {
+position: absolute;
+inset: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: none;
+}
+.booth-stage video {
+transform: scaleX(-1);
+}
+.booth-placeholder-text {
+font-size: 13px;
+color: var(--text-muted);
+margin-bottom: 14px;
+max-width: 220px;
+}
+.booth-controls {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+justify-content: center;
+margin-top: 12px;
+}
+.btn-vintage {
+background: var(--text-main);
+color: #ffffff;
+border: 1px solid var(--text-main);
+padding: 9px 15px;
+font-family: 'Montserrat', sans-serif;
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.14em;
+cursor: pointer;
+transition: all 0.25s ease;
+}
+.btn-vintage:hover {
+background: var(--accent);
+border-color: var(--accent);
+}
+.btn-vintage.outline {
+background: transparent;
+color: var(--text-main);
+}
+.btn-vintage.outline:hover {
+background: var(--text-main);
+color: #ffffff;
+}
+.hidden {
+display: none !important;
+}
+.flash-overlay {
+position: fixed;
+inset: 0;
+background: #ffffff;
+opacity: 0;
+pointer-events: none;
+z-index: 9999;
+transition: opacity 0.35s ease;
+}
+.flash-overlay.active {
+opacity: 1;
+transition: none;
+}
+/* Мини-игры для двоих */
+.games-wrapper {
+display: grid;
+grid-template-columns: 1fr 1.15fr;
+gap: 32px;
+align-items: start;
+}
+.game-panel {
+background: var(--card-bg);
+border: 1px solid var(--border-paper);
+box-shadow: var(--shadow-soft);
+padding: 34px 28px;
+}
+.game-panel-title {
+font-family: 'Cormorant Garamond', serif;
+font-size: 30px;
+font-weight: 600;
+text-align: center;
+margin-bottom: 6px;
+}
+.game-panel-sub {
+font-size: 12px;
+color: var(--text-muted);
+text-align: center;
+margin-bottom: 24px;
+}
+/* Игра-рулетка вопросов */
+.quiz-card {
+background: var(--bg-paper);
+border: 1px solid var(--border-paper);
+padding: 28px 22px;
+text-align: center;
+min-height: 150px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+margin-bottom: 20px;
+}
+.quiz-counter {
+font-size: 11px;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(--accent);
+margin-bottom: 10px;
+}
+.quiz-question {
+font-family: 'Cormorant Garamond', serif;
+font-size: 26px;
+font-weight: 600;
+line-height: 1.3;
+color: var(--text-main);
+}
+.quiz-buttons {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 10px;
+margin-bottom: 16px;
+}
+.vote-btn {
+background: #ffffff;
+border: 1px solid var(--border-paper);
+padding: 12px 8px;
+font-family: 'Montserrat', sans-serif;
+font-size: 12px;
+font-weight: 500;
+color: var(--text-main);
+cursor: pointer;
+transition: all 0.25s ease;
+}
+.vote-btn:hover,
+.vote-btn.selected {
+background: var(--accent);
+color: #ffffff;
+border-color: var(--accent);
+}
+.quiz-feedback {
+text-align: center;
+font-size: 13px;
+color: var(--accent);
+min-height: 22px;
+font-style: italic;
+margin-bottom: 12px;
+}
+.quiz-nav {
+display: flex;
+justify-content: center;
+gap: 12px;
+}
+/* Скретч-купоны */
+.scratch-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 16px;
+}
+.scratch-card {
+position: relative;
+height: 136px;
+border: 1px solid var(--border-paper);
+background: var(--bg-paper);
+overflow: hidden;
+user-select: none;
+}
+.scratch-prize {
+position: absolute;
+inset: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 14px;
+text-align: center;
+}
+.scratch-prize-tag {
+font-size: 10px;
+text-transform: uppercase;
+letter-spacing: 0.2em;
+color: var(--accent);
+margin-bottom: 4px;
+font-weight: 600;
+}
+.scratch-prize-text {
+font-family: 'Cormorant Garamond', serif;
+font-size: 21px;
+font-weight: 700;
+line-height: 1.2;
+color: var(--text-main);
+}
+.scratch-canvas {
+position: absolute;
+inset: 0;
+width: 100%;
+height: 100%;
+cursor: crosshair;
+touch-action: none;
+transition: opacity 0.6s ease;
+}
+.scratch-canvas.revealed {
+opacity: 0;
+pointer-events: none;
+}
+/* Стена воспоминаний */
+.wall-controls {
+display: flex;
+justify-content: center;
+gap: 12px;
+margin-bottom: 34px;
+flex-wrap: wrap;
+}
+.mode-btn {
+background: var(--card-bg);
+border: 1px solid var(--border-paper);
+padding: 11px 22px;
+font-family: 'Montserrat', sans-serif;
+font-size: 12px;
+text-transform: uppercase;
+letter-spacing: 0.16em;
+color: var(--text-main);
+cursor: pointer;
+transition: all 0.3s ease;
+}
+.mode-btn.active,
+.mode-btn:hover {
+background: var(--accent);
+border-color: var(--accent);
+color: #ffffff;
+}
+/* Режим 1: Всплывающие кадры (Скрапбук-стол) */
+.scatter-stage {
+position: relative;
+width: 100%;
+height: 680px;
+background: var(--card-bg);
+border: 1px solid var(--border-paper);
+box-shadow: var(--shadow-soft);
+overflow: hidden;
+}
+.scatter-hint {
+position: absolute;
+bottom: 14px;
+left: 50%;
+transform: translateX(-50%);
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.18em;
+color: var(--text-muted);
+background: rgba(250, 247, 242, 0.92);
+padding: 6px 16px;
+border: 1px solid var(--border-paper);
+z-index: 40;
+pointer-events: none;
+white-space: nowrap;
+}
+.scatter-polaroid {
+position: absolute;
+width: 210px;
+background: #ffffff;
+padding: 10px 10px 26px;
+border: 1px solid var(--border-paper);
+box-shadow: 0 14px 28px rgba(30, 28, 26, 0.16);
+cursor: pointer;
+opacity: 0;
+transform: scale(0.75);
+transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+.scatter-polaroid.visible {
+opacity: 1;
+}
+.scatter-polaroid:hover {
+z-index: 50 !important;
+box-shadow: 0 20px 38px rgba(30, 28, 26, 0.24);
+}
+.scatter-polaroid img,
+.scatter-polaroid video {
+width: 100%;
+height: 190px;
+object-fit: cover;
+display: block;
+background: #f0ece4;
+}
+.scatter-caption {
+font-family: 'Caveat', cursive;
+font-size: 20px;
+text-align: center;
+color: var(--text-main);
+margin-top: 8px;
+line-height: 1;
+}
+/* Режим 2: Пересмотреть все сразу (Сетка) */
+.memory-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+gap: 22px;
+}
+.gallery-item {
+background: #ffffff;
+padding: 10px 10px 22px;
+border: 1px solid var(--border-paper);
+box-shadow: var(--shadow-soft);
+cursor: pointer;
+transition: transform 0.3s ease;
+position: relative;
+}
+.gallery-item:hover {
+transform: translateY(-4px);
+}
+.gallery-media-box {
+width: 100%;
+aspect-ratio: 1 / 1.08;
+overflow: hidden;
+background: #f0ece4;
+position: relative;
+}
+.gallery-media-box img,
+.gallery-media-box video {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+.video-badge {
+position: absolute;
+top: 8px;
+right: 8px;
+background: rgba(30, 28, 26, 0.78);
+color: #ffffff;
+font-size: 10px;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+padding: 3px 8px;
+}
+.gallery-item-label {
+font-family: 'Caveat', cursive;
+font-size: 20px;
+text-align: center;
+color: var(--text-muted);
+margin-top: 8px;
+}
+/* Lightbox (Полноэкранный просмотр) */
+.lightbox {
+position: fixed;
+inset: 0;
+background: rgba(24, 22, 20, 0.94);
+z-index: 9500;
+display: none;
+align-items: center;
+justify-content: center;
+padding: 24px;
+}
+.lightbox.open {
+display: flex;
+}
+.lightbox-frame {
+background: #ffffff;
+padding: 14px 14px 36px;
+max-width: 90vw;
+max-height: 86vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+position: relative;
+box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+.lightbox-media-container {
+max-width: 82vw;
+max-height: 68vh;
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+background: #141312;
+}
+.lightbox-media-container img,
+.lightbox-media-container video {
+max-width: 82vw;
+max-height: 68vh;
+object-fit: contain;
+display: block;
+}
+.lightbox-caption {
+font-family: 'Caveat', cursive;
+font-size: 26px;
+color: var(--text-main);
+margin-top: 12px;
+text-align: center;
+}
+.lightbox-controls {
+position: fixed;
+bottom: 24px;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+gap: 14px;
+z-index: 9600;
+}
+.lb-btn {
+background: rgba(255, 255, 255, 0.14);
+color: #ffffff;
+border: 1px solid rgba(255, 255, 255, 0.35);
+padding: 10px 20px;
+font-family: 'Montserrat', sans-serif;
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.16em;
+cursor: pointer;
+backdrop-filter: blur(6px);
+transition: background 0.25s ease;
+}
+.lb-btn:hover {
+background: var(--accent);
+border-color: var(--accent);
+}
+/* Подвал */
+footer {
+text-align: center;
+padding: 48px 20px 64px;
+border-top: 1px solid var(--border-paper);
+margin-top: 40px;
+}
+.footer-script {
+font-family: 'Alex Brush', cursive;
+font-size: 42px;
+color: var(--accent);
+margin-bottom: 6px;
+}
+.footer-date {
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.25em;
+color: var(--text-muted);
+}
+@media (max-width: 900px) {
+.editorial-grid,
+.polaroids-grid,
+.games-wrapper {
+grid-template-columns: 1fr;
+}
+.polaroid-card:nth-child(n) {
+transform: rotate(0deg);
+max-width: 420px;
+margin: 0 auto;
+width: 100%;
+}
+.scatter-stage {
+height: 520px;
+}
+.scatter-polaroid {
+width: 165px;
+}
+.scatter-polaroid img,
+.scatter-polaroid video {
+height: 150px;
+}
+}
+@media (max-width: 560px) {
+.timer-grid {
+grid-template-columns: repeat(2, 1fr);
+}
+.scratch-grid {
+grid-template-columns: 1fr;
+}
+.quiz-buttons {
+grid-template-columns: 1fr;
+}
+}
+
+
+Наша мелодия
+THA GOTHFATHER, MYAGI — WAIT 4 U
+
+Слушать
+
+0:00
+
+0:00
+
+
+Специальный выпуск • Наша история
+6 Months — Полгода
+06.06.2026 — 06.12.2026
+
+Мы вместе уже ровно
+
+
+0
+Дней
+
+
+00
+Часов
+
+
+00
+Минут
+
+
+00
+Секунд
+
+
+love
+/lʌv/ • noun
+1. Глубокая, тихая и всепоглощающая нежность, когда рядом с человеком любое место становится домом.
+2. То самое чувство, которое началось 6 июня 2026 года и с каждым днём становится только сильнее.
+“
+Быть с тобой — будто самый лучший сон.
+
+Я не верю, что со мной, да, ты случилась...
+мартин — ты случилась
+
+Хроника чувств
+Три главные даты
+
+Первая встреча
+29.05.2026
+
+Начали встречаться
+06.06.2026
+
+Сделайте совместный снимок прямо сейчас на память о наших шести месяцах
+Включить камеру
+Сделать кадр
+Скачать Polaroid
+Переснять
+Полгода отношений
+06.12.2026
+
+
+
+Интерактив для двоих
+Маленькие радости
+
+Кто из нас чаще...?
+Выбирайте ответ и переходите к следующему вопросу
+Вопрос 1 из 10
+Кто из нас чаще первым пишет утром?
+Точно я
+Точно ты
+Оба одинаково
+Случайный вопрос
+Следующий
+
+Купоны желаний
+Сотрите защитный слой курсором или пальцем, чтобы открыть подарок
+Купон 01
+Расслабляющий массаж спины
+
+
+Купон 02
+Выбор фильма и еды на вечер
+
+
+Купон 03
+Исполнение любого желания
+
+
+Купон 04
+Свидание-сюрприз для двоих
+
+
+
+
+
+Архив 2026
+Наши моменты
+
+Всплывающие кадры
+Пересмотреть все сразу
+Нажмите на любой кадр, чтобы открыть его полностью
+С любовью, к нашим шести месяцам
+06.06.2026 — 06.12.2026 • Продолжение следует
+Назад
+Закрыть
+Вперёд
+
+document.addEventListener('DOMContentLoaded', () => {
+/* =========================================
+1. МУЗЫКАЛЬНЫЙ ПЛЕЕР
+========================================= */
+const audio = document.getElementById('bgAudio');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const vinylDisc = document.getElementById('vinylDisc');
+const seekBar = document.getElementById('seekBar');
+const currentTimeEl = document.getElementById('currentTime');
+const durationTimeEl = document.getElementById('durationTime');
+function formatTime(sec) {
+if (!isFinite(sec)) return '0:00';
+const m = Math.floor(sec / 60);
+const s = Math.floor(sec % 60);
+return ${m}:${s < 10 ? '0' : ''}${s};
+}
+audio.addEventListener('loadedmetadata', () => {
+durationTimeEl.textContent = formatTime(audio.duration);
+});
+audio.addEventListener('timeupdate', () => {
+if (audio.duration) {
+seekBar.value = (audio.currentTime / audio.duration) * 100;
+currentTimeEl.textContent = formatTime(audio.currentTime);
+}
+});
+audio.addEventListener('ended', () => {
+vinylDisc.classList.remove('playing');
+playPauseBtn.textContent = 'Слушать';
+});
+seekBar.addEventListener('input', () => {
+if (audio.duration) {
+audio.currentTime = (seekBar.value / 100) * audio.duration;
+}
+});
+playPauseBtn.addEventListener('click', () => {
+if (audio.paused) {
+audio.play().then(() => {
+vinylDisc.classList.add('playing');
+playPauseBtn.textContent = 'Пауза';
+}).catch(() => {
+playPauseBtn.textContent = 'Нет файла';
+});
+} else {
+audio.pause();
+vinylDisc.classList.remove('playing');
+playPauseBtn.textContent = 'Слушать';
+}
+});
+/* =========================================
+2. ЖИВОЙ ТАЙМЕР ОТНОШЕНИЙ
+========================================= */
+const startDate = new Date('2026-06-06T00:00:00').getTime();
+const tDays = document.getElementById('tDays');
+const tHours = document.getElementById('tHours');
+const tMinutes = document.getElementById('tMinutes');
+const tSeconds = document.getElementById('tSeconds');
+function updateTimer() {
+const now = Date.now();
+const diff = Math.abs(now - startDate);
+const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+const minutes = Math.floor((diff / (1000 * 60)) % 60);
+const seconds = Math.floor((diff / 1000) % 60);
+tDays.textContent = days;
+tHours.textContent = hours < 10 ? '0' + hours : hours;
+tMinutes.textContent = minutes < 10 ? '0' + minutes : minutes;
+tSeconds.textContent = seconds < 10 ? '0' + seconds : seconds;
+}
+updateTimer();
+setInterval(updateTimer, 1000);
+/* =========================================
+3. ИНТЕРАКТИВНАЯ ФОТОБУДКА POLAROID
+========================================= */
+const startCameraBtn = document.getElementById('startCameraBtn');
+const captureBtn = document.getElementById('captureBtn');
+const downloadPolaroidBtn = document.getElementById('downloadPolaroidBtn');
+const retakeBtn = document.getElementById('retakeBtn');
+const boothVideo = document.getElementById('boothVideo');
+const boothResultImg = document.getElementById('boothResultImg');
+const boothHint = document.getElementById('boothHint');
+const polaroidCanvas = document.getElementById('polaroidCanvas');
+const flashOverlay = document.getElementById('flashOverlay');
+let mediaStream = null;
+async function startCamera() {
+try {
+mediaStream = await navigator.mediaDevices.getUserMedia({
+video: { facingMode: 'user', width: { ideal: 1080 }, height: { ideal: 1080 } },
+audio: false
+});
+boothVideo.srcObject = mediaStream;
+boothVideo.style.display = 'block';
+boothResultImg.style.display = 'none';
+boothHint.classList.add('hidden');
+startCameraBtn.classList.add('hidden');
+captureBtn.classList.remove('hidden');
+downloadPolaroidBtn.classList.add('hidden');
+retakeBtn.classList.add('hidden');
+} catch (err) {
+boothHint.textContent = 'Не удалось получить доступ к камере. Проверьте разрешения браузера.';
+}
+}
+function stopCamera() {
+if (mediaStream) {
+mediaStream.getTracks().forEach(track => track.stop());
+mediaStream = null;
+}
+}
+startCameraBtn.addEventListener('click', startCamera);
+captureBtn.addEventListener('click', () => {
+// Эффект вспышки
+flashOverlay.classList.add('active');
+setTimeout(() => flashOverlay.classList.remove('active'), 80);
+// Отрисовка карточки Polaroid на Canvas
+const cardW = 800;
+const cardH = 980;
+const pad = 48;
+const photoW = cardW - pad * 2;
+const photoH = 720;
+polaroidCanvas.width = cardW;
+polaroidCanvas.height = cardH;
+const ctx = polaroidCanvas.getContext('2d');
+// Бумажный фон карточки
+ctx.fillStyle = '#ffffff';
+ctx.fillRect(0, 0, cardW, cardH);
+// Тонкая рамка
+ctx.strokeStyle = '#e6dfd5';
+ctx.lineWidth = 4;
+ctx.strokeRect(2, 2, cardW - 4, cardH - 4);
+// Кроп видео под квадрат/прямоугольник без искажений (зеркально)
+const vw = boothVideo.videoWidth || 640;
+const vh = boothVideo.videoHeight || 640;
+const targetRatio = photoW / photoH;
+const videoRatio = vw / vh;
+let sx = 0, sy = 0, sWidth = vw, sHeight = vh;
+if (videoRatio > targetRatio) {
+sWidth = vh * targetRatio;
+sx = (vw - sWidth) / 2;
+} else {
+sHeight = vw / targetRatio;
+sy = (vh - sHeight) / 2;
+}
+ctx.save();
+ctx.translate(pad + photoW, pad);
+ctx.scale(-1, 1);
+ctx.drawImage(boothVideo, sx, sy, sWidth, sHeight, 0, 0, photoW, photoH);
+ctx.restore();
+// Подпись и дата
+ctx.fillStyle = '#1e1c1a';
+ctx.font = '600 54px "Caveat", cursive';
+ctx.textAlign = 'center';
+ctx.fillText('Полгода отношений', cardW / 2, pad + photoH + 85);
+ctx.fillStyle = '#b85d6f';
+ctx.font = '600 42px "Caveat", cursive';
+ctx.fillText('06.12.2026', cardW / 2, pad + photoH + 140);
+const dataUrl = polaroidCanvas.toDataURL('image/png');
+boothResultImg.src = dataUrl;
+boothResultImg.style.display = 'block';
+boothVideo.style.display = 'none';
+downloadPolaroidBtn.href = dataUrl;
+captureBtn.classList.add('hidden');
+downloadPolaroidBtn.classList.remove('hidden');
+retakeBtn.classList.remove('hidden');
+stopCamera();
+});
+retakeBtn.addEventListener('click', () => {
+startCamera();
+});
+/* =========================================
+4. МИНИ-ИГРА 1: КТО ИЗ НАС ЧАЩЕ...?
+========================================= */
+const questions = [
+'Кто из нас чаще первым пишет утром?',
+'Кто из нас дольше выбирает, что посмотреть вечером?',
+'Кто из нас чаще предлагает спонтанно пойти гулять?',
+'Кто из нас быстрее засыпает во время фильма?',
+'Кто из нас чаще говорит «я тебя люблю» без повода?',
+'Кто из нас чаще делает милые фотографии друг друга?',
+'Кто из нас сильнее переживает, если другой долго не отвечает?',
+'Кто из нас чаще придумывает идеи для свиданий?',
+'Кто из нас первым идёт мириться после маленького спора?',
+'Кто из нас больше любит обниматься перед сном?'
+];
+let currentQIndex = 0;
+const quizCounter = document.getElementById('quizCounter');
+const quizQuestion = document.getElementById('quizQuestion');
+const quizFeedback = document.getElementById('quizFeedback');
+const voteBtns = document.querySelectorAll('.vote-btn');
+const nextQuestionBtn = document.getElementById('nextQuestionBtn');
+const randomQuestionBtn = document.getElementById('randomQuestionBtn');
+function renderQuestion(index) {
+currentQIndex = index;
+quizCounter.textContent = Вопрос ${index + 1} из ${questions.length};
+quizQuestion.textContent = questions[index];
+quizFeedback.textContent = '';
+voteBtns.forEach(btn => btn.classList.remove('selected'));
+}
+voteBtns.forEach(btn => {
+btn.addEventListener('click', () => {
+voteBtns.forEach(b => b.classList.remove('selected'));
+btn.classList.add('selected');
+quizFeedback.textContent = Ваш выбор: ${btn.dataset.vote}. Запомнили этот ответ.;
+});
+});
+nextQuestionBtn.addEventListener('click', () => {
+const nextIdx = (currentQIndex + 1) % questions.length;
+renderQuestion(nextIdx);
+});
+randomQuestionBtn.addEventListener('click', () => {
+let randIdx = Math.floor(Math.random() * questions.length);
+if (randIdx === currentQIndex && questions.length > 1) {
+randIdx = (randIdx + 1) % questions.length;
+}
+renderQuestion(randIdx);
+});
+/* =========================================
+5. МИНИ-ИГРА 2: СКРЕТЧ-КУПОНЫ ЖЕЛАНИЙ
+========================================= */
+const scratchCards = document.querySelectorAll('.scratch-card');
+scratchCards.forEach(card => {
+const canvas = card.querySelector('.scratch-canvas');
+const ctx = canvas.getContext('2d');
+let isDrawing = false;
+let isRevealed = false;
+function initScratchCanvas() {
+const rect = card.getBoundingClientRect();
+canvas.width = rect.width || 240;
+canvas.height = rect.height || 136;
+// Защитное серебристо-серое покрытие
+const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+grad.addColorStop(0, '#cfc9c0');
+grad.addColorStop(0.5, '#b8b1a7');
+grad.addColorStop(1, '#c9c3ba');
+ctx.fillStyle = grad;
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+// Тонкая декоративная рамка на слое
+ctx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
+ctx.lineWidth = 2;
+ctx.strokeRect(8, 8, canvas.width - 16, canvas.height - 16);
+// Текст-подсказка
+ctx.fillStyle = '#4a453f';
+ctx.font = '500 12px "Montserrat", sans-serif';
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.fillText('СОТРИТЕ ЗАЩИТНЫЙ СЛОЙ', canvas.width / 2, canvas.height / 2);
+}
+initScratchCanvas();
+function getCoords(e) {
+const rect = canvas.getBoundingClientRect();
+const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+return {
+x: clientX - rect.left,
+y: clientY - rect.top
+};
+}
+function scratch(e) {
+if (!isDrawing || isRevealed) return;
+e.preventDefault();
+const { x, y } = getCoords(e);
+ctx.globalCompositeOperation = 'destination-out';
+ctx.beginPath();
+ctx.arc(x, y, 22, 0, Math.PI * 2);
+ctx.fill();
+checkReveal();
+}
+function checkReveal() {
+const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+let transparentCount = 0;
+const totalPixels = pixels.length / 4;
+for (let i = 3; i < pixels.length; i += 16) {
+if (pixels[i] === 0) transparentCount++;
+}
+if (transparentCount / (totalPixels / 4) > 0.48) {
+isRevealed = true;
+canvas.classList.add('revealed');
+}
+}
+canvas.addEventListener('mousedown', (e) => { isDrawing = true; scratch(e); });
+window.addEventListener('mouseup', () => { isDrawing = false; });
+canvas.addEventListener('mousemove', scratch);
+canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratch(e); }, { passive: false });
+window.addEventListener('touchend', () => { isDrawing = false; });
+canvas.addEventListener('touchmove', scratch, { passive: false });
+});
+/* =========================================
+6. СТЕНА ВОСПОМИНАНИЙ И LIGHTBOX
+========================================= */
+const mediaFiles = [
+{ src: '1.jpg', type: 'image', label: 'Момент 01' },
+{ src: '2.jpg', type: 'image', label: 'Момент 02' },
+{ src: '3.jpg', type: 'image', label: 'Момент 03' },
+{ src: '4.jpg', type: 'image', label: 'Момент 04' },
+{ src: '5.jpg', type: 'image', label: 'Момент 05' },
+{ src: '6.jpg', type: 'image', label: 'Момент 06' },
+{ src: '7.jpg', type: 'image', label: 'Момент 07' },
+{ src: '8.jpg', type: 'image', label: 'Момент 08' },
+{ src: '9.jpg', type: 'image', label: 'Момент 09' },
+{ src: '10.jpg', type: 'image', label: 'Момент 10' },
+{ src: '11.jpg', type: 'image', label: 'Момент 11' },
+{ src: '12.jpg', type: 'image', label: 'Момент 12' },
+{ src: '13.jpg', type: 'image', label: 'Момент 13' },
+{ src: '14.jpg', type: 'image', label: 'Момент 14' },
+{ src: '15.jpg', type: 'image', label: 'Момент 15' },
+{ src: '16.jpg', type: 'image', label: 'Момент 16' },
+{ src: '17.jpg', type: 'image', label: 'Момент 17' },
+{ src: '18.jpg', type: 'image', label: 'Момент 18' },
+{ src: '19.jpg', type: 'image', label: 'Момент 19' },
+{ src: '20.jpg', type: 'image', label: 'Момент 20' },
+{ src: '21.jpg', type: 'image', label: 'Момент 21' },
+{ src: '21.2.jpg', type: 'image', label: 'Момент 22' },
+{ src: '23.jpg', type: 'image', label: 'Момент 23' },
+{ src: '23.3.jpg', type: 'image', label: 'Момент 24' },
+{ src: '23.4.jpg', type: 'image', label: 'Момент 25' },
+{ src: 'video.mp4', type: 'video', label: 'Наше видео' }
+];
+const scatterStage = document.getElementById('scatterStage');
+const memoryGrid = document.getElementById('memoryGrid');
+const modeScatterBtn = document.getElementById('modeScatterBtn');
+const modeGridBtn = document.getElementById('modeGridBtn');
+// Заполнение сетки ("Пересмотреть все сразу")
+mediaFiles.forEach((item, idx) => {
+const card = document.createElement('div');
+card.className = 'gallery-item';
+const box = document.createElement('div');
+box.className = 'gallery-media-box';
+if (item.type === 'video') {
+const vid = document.createElement('video');
+vid.src = item.src;
+vid.muted = true;
+vid.loop = true;
+vid.playsInline = true;
+vid.className = 'bw-hover';
+vid.addEventListener('mouseenter', () => vid.play().catch(() => {}));
+vid.addEventListener('mouseleave', () => vid.pause());
+box.appendChild(vid);
+const badge = document.createElement('span');
+badge.className = 'video-badge';
+badge.textContent = 'Видео';
+box.appendChild(badge);
+} else {
+const img = document.createElement('img');
+img.src = item.src;
+img.alt = item.label;
+img.loading = 'lazy';
+img.className = 'bw-hover';
+box.appendChild(img);
+}
+const label = document.createElement('div');
+label.className = 'gallery-item-label';
+label.textContent = item.label;
+card.appendChild(box);
+card.appendChild(label);
+card.addEventListener('click', () => openLightboxByIndex(idx));
+memoryGrid.appendChild(card);
+});
+// Анимация "Всплывающие кадры"
+let scatterInterval = null;
+let scatterIndex = 0;
+let zCounter = 2;
+function spawnNextScatterItem() {
+if (scatterStage.classList.contains('hidden')) return;
+const item = mediaFiles[scatterIndex % mediaFiles.length];
+const currentMediaIndex = scatterIndex % mediaFiles.length;
+scatterIndex++;
+const stageW = scatterStage.clientWidth;
+const stageH = scatterStage.clientHeight;
+const cardW = window.innerWidth <= 900 ? 165 : 210;
+const cardH = window.innerWidth <= 900 ? 200 : 250;
+const maxLeft = Math.max(16, stageW - cardW - 16);
+const maxTop = Math.max(16, stageH - cardH - 48);
+const left = Math.floor(Math.random() * maxLeft);
+const top = Math.floor(Math.random() * maxTop);
+const angle = (Math.random() * 24 - 12).toFixed(1);
+const el = document.createElement('div');
+el.className = 'scatter-polaroid';
+el.style.left = ${left}px;
+el.style.top = ${top}px;
+el.style.zIndex = zCounter++;
+if (item.type === 'video') {
+const vid = document.createElement('video');
+vid.src = item.src;
+vid.muted = true;
+vid.loop = true;
+vid.autoplay = true;
+vid.playsInline = true;
+vid.className = 'bw-hover';
+el.appendChild(vid);
+} else {
+const img = document.createElement('img');
+img.src = item.src;
+img.alt = item.label;
+img.className = 'bw-hover';
+el.appendChild(img);
+}
+const cap = document.createElement('div');
+cap.className = 'scatter-caption';
+cap.textContent = item.label;
+el.appendChild(cap);
+el.addEventListener('click', () => openLightboxByIndex(currentMediaIndex));
+scatterStage.appendChild(el);
+requestAnimationFrame(() => {
+el.classList.add('visible');
+el.style.transform = scale(1) rotate(${angle}deg);
+});
+// Ограничиваем количество одновременно лежащих карточек на столе, чтобы не перегружать память
+const allCards = scatterStage.querySelectorAll('.scatter-polaroid');
+if (allCards.length > 14) {
+const oldest = allCards[0];
+oldest.style.opacity = '0';
+setTimeout(() => oldest.remove(), 650);
+}
+}
+function startScatterMode() {
+stopScatterMode();
+// Сразу выкладываем первые 4 кадра с небольшой задержкой
+for (let i = 0; i < 4; i++) {
+setTimeout(spawnNextScatterItem, i * 260);
+}
+scatterInterval = setInterval(spawnNextScatterItem, 1900);
+}
+function stopScatterMode() {
+if (scatterInterval) {
+clearInterval(scatterInterval);
+scatterInterval = null;
+}
+}
+startScatterMode();
+modeScatterBtn.addEventListener('click', () => {
+modeScatterBtn.classList.add('active');
+modeGridBtn.classList.remove('active');
+scatterStage.classList.remove('hidden');
+memoryGrid.classList.add('hidden');
+startScatterMode();
+});
+modeGridBtn.addEventListener('click', () => {
+modeGridBtn.classList.add('active');
+modeScatterBtn.classList.remove('active');
+memoryGrid.classList.remove('hidden');
+scatterStage.classList.add('hidden');
+stopScatterMode();
+});
+/* =========================================
+7. ПОЛНОЭКРАННЫЙ LIGHTBOX
+========================================= */
+const lightbox = document.getElementById('lightbox');
+const lbMediaContainer = document.getElementById('lbMediaContainer');
+const lbCaption = document.getElementById('lbCaption');
+const lbPrevBtn = document.getElementById('lbPrevBtn');
+const lbNextBtn = document.getElementById('lbNextBtn');
+const lbCloseBtn = document.getElementById('lbCloseBtn');
+let currentLightboxIndex = 0;
+function renderLightboxContent(item) {
+lbMediaContainer.innerHTML = '';
+if (item.type === 'video') {
+const vid = document.createElement('video');
+vid.src = item.src;
+vid.controls = true;
+vid.autoplay = true;
+vid.playsInline = true;
+lbMediaContainer.appendChild(vid);
+} else {
+const img = document.createElement('img');
+img.src = item.src;
+img.alt = item.label || '';
+lbMediaContainer.appendChild(img);
+}
+lbCaption.textContent = item.label || '';
+}
+function openLightboxByIndex(index) {
+currentLightboxIndex = (index + mediaFiles.length) % mediaFiles.length;
+renderLightboxContent(mediaFiles[currentLightboxIndex]);
+lightbox.classList.add('open');
+document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+lightbox.classList.remove('open');
+lbMediaContainer.innerHTML = '';
+document.body.style.overflow = '';
+}
+lbPrevBtn.addEventListener('click', () => {
+openLightboxByIndex(currentLightboxIndex - 1);
+});
+lbNextBtn.addEventListener('click', () => {
+openLightboxByIndex(currentLightboxIndex + 1);
+});
+lbCloseBtn.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => {
+if (e.target === lightbox) {
+closeLightbox();
+}
+});
+document.addEventListener('keydown', (e) => {
+if (!lightbox.classList.contains('open')) return;
+if (e.key === 'Escape') closeLightbox();
+if (e.key === 'ArrowLeft') openLightboxByIndex(currentLightboxIndex - 1);
+if (e.key === 'ArrowRight') openLightboxByIndex(currentLightboxIndex + 1);
+});
+// Подключаем открытие в Lightbox для фото из блока "Три главные даты"
+document.querySelectorAll('[data-lightbox-src]').forEach(el => {
+el.addEventListener('click', () => {
+const src = el.getAttribute('data-lightbox-src');
+const caption = el.getAttribute('data-lightbox-caption');
+const foundIdx = mediaFiles.findIndex(m => m.src === src);
+if (foundIdx !== -1) {
+currentLightboxIndex = foundIdx;
+renderLightboxContent({
+src: src,
+type: 'image',
+label: caption || mediaFiles[foundIdx].label
+});
+lightbox.classList.add('open');
+document.body.style.overflow = 'hidden';
+}
+});
+});
+});
