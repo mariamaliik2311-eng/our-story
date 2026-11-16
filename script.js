@@ -38,7 +38,13 @@ function spawn() {
   if (stg.children.length > 15) stg.removeChild(stg.firstChild);
 }
 setInterval(() => { if (!stg.classList.contains('hide')) spawn(); }, 1400);
-function batch() { for (let i = 0; i < 6; i++) setTimeout(spawn, i * 160); }
+
+function batch(clearFirst) {
+  stg.classList.remove('hide'); grd.classList.remove('show');
+  document.getElementById('b1').classList.add('act'); document.getElementById('b2').classList.remove('act');
+  if (clearFirst) stg.innerHTML = '';
+  for (let i = 0; i < 6; i++) setTimeout(spawn, i * 110);
+}
 
 files.forEach((f, i) => {
   const d = document.createElement('div'); d.className = 'g-item';
@@ -49,7 +55,7 @@ files.forEach((f, i) => {
 
 document.getElementById('b1').onclick = () => { stg.classList.remove('hide'); grd.classList.remove('show'); document.getElementById('b1').classList.add('act'); document.getElementById('b2').classList.remove('act'); };
 document.getElementById('b2').onclick = () => { stg.classList.add('hide'); grd.classList.add('show'); document.getElementById('b2').classList.add('act'); document.getElementById('b1').classList.remove('act'); };
-document.getElementById('b3').onclick = batch;
+document.getElementById('b3').onclick = () => batch(true);
 
 function openLb(s, t) {
   document.getElementById('lb').classList.add('open');
@@ -86,4 +92,4 @@ document.getElementById('snapBtn').onclick = () => {
   if (stm) stm.getTracks().forEach(t => t.stop());
 };
 document.getElementById('dlBtn').onclick = () => { const a = document.createElement('a'); a.download = '06-12-2026.png'; a.href = cnv.toDataURL('image/png'); a.click(); };
-batch();
+batch(false);
