@@ -23,7 +23,7 @@ vault.innerHTML = `
     <div id="vLock">
       <p class="v-hint">Подсказка: дата нашего первого поцелуя</p>
       <div class="v-form">
-        <input type="text" id="vInp" placeholder="16.06.26" maxlength="10">
+        <input type="text" id="vInp" placeholder="пиши тута" maxlength="10">
         <button class="btn" id="vBtn">Открыть</button>
       </div>
       <div id="vErr" class="v-err"></div>
