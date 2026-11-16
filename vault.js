@@ -45,3 +45,9 @@ document.getElementById('vBtn').onclick = () => {
     document.getElementById('vErr').textContent = 'Неверный код, попробуй вспомнить ту самую дату!';
   }
 };
+
+console.log(
+  '%cПривет, хакер! %cЯ знала, что ты заглянешь в код. Люблю тебя сильно!',
+  'color: #b85d6f; font-size: 22px; font-weight: bold;',
+  'color: #1e1c1a; font-size: 16px; font-weight: 600;'
+);
